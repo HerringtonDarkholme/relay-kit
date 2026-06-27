@@ -1,5 +1,12 @@
 # @reservoir0x/relay-bitcoin-wallet-adapter
 
+## 18.0.1
+
+### Patch Changes
+
+- Updated dependencies [3bf4cfb]
+  - @relayprotocol/relay-sdk@6.0.1
+
 ## 18.0.0
 
 ### Patch Changes
