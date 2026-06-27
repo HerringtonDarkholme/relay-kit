@@ -1,5 +1,46 @@
 # @reservoir0x/relay-sdk
 
+## 6.0.0
+
+### Major Changes
+
+- 4149ded: Remove Sui support
+
+### Patch Changes
+
+- b61e540: Fix native TRX handling on Tron: forward call_value on the deposit transaction (was sending 0 TRX) and fix the native-TRX sentinel address (the wrong sentinel made native TRX fall through to a failing balanceOf call).
+
+## 5.2.8
+
+### Patch Changes
+
+- 1fc8190: Add TON dead address
+
+## 5.2.7
+
+### Patch Changes
+
+- eab4c8f: Add testnet ws
+
+## 5.2.6
+
+### Patch Changes
+
+- a443358: Sync api types
+
+## 5.2.5
+
+### Patch Changes
+
+- ef54ef1: Sync api types
+
+## 5.2.4
+
+### Patch Changes
+
+- 670737f: lighter sdk adapter
+- 0eedcc1: add disableCapabilitiesCheck option to skip wallet.getCapabilities
+
 ## 5.2.3
 
 ### Patch Changes

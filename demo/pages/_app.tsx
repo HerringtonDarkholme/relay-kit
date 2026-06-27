@@ -13,6 +13,14 @@ import {
   TESTNET_RELAY_API,
   type RelayChain
 } from '@relayprotocol/relay-sdk'
+
+const DEV_RELAY_API = 'https://api.dev.relay.link'
+
+const resolveRelayApi = (api: unknown): string => {
+  if (api === 'testnets') return TESTNET_RELAY_API
+  if (api === 'mainnets-dev') return DEV_RELAY_API
+  return MAINNET_RELAY_API
+}
 import { configureViemChain } from '@relayprotocol/relay-sdk/chain-utils'
 import { ThemeProvider } from 'next-themes'
 import { useRouter } from 'next/router'
@@ -23,7 +31,6 @@ import {
 import { EthereumWalletConnectors } from '@dynamic-labs/ethereum'
 import { SolanaWalletConnectors } from '@dynamic-labs/solana'
 import { BitcoinWalletConnectors } from '@dynamic-labs/bitcoin'
-import { SuiWalletConnectors } from '@dynamic-labs/sui'
 import { convertRelayChainToDynamicNetwork } from 'utils/dynamic'
 import { DynamicWagmiConnector } from '@dynamic-labs/wagmi-connector'
 import { EIP1193RequestFn, fallback, Transport } from 'viem'
@@ -78,8 +85,7 @@ const AppWrapper: FC<AppWrapperProps> = ({ children, dynamicChains }) => {
   const router = useRouter()
 
   useEffect(() => {
-    const isTestnet = router.query.api === 'testnets'
-    const newApi = isTestnet ? TESTNET_RELAY_API : MAINNET_RELAY_API
+    const newApi = resolveRelayApi(router.query.api)
     if (relayApi !== newApi) {
       setRelayApi(newApi)
     }
@@ -179,7 +185,6 @@ const AppWrapper: FC<AppWrapperProps> = ({ children, dynamicChains }) => {
                 SolanaWalletConnectors,
                 BitcoinWalletConnectors,
                 EclipseWalletConnectors,
-                SuiWalletConnectors,
                 AbstractEvmWalletConnectors,
                 TronWalletConnectors
               ],
@@ -255,8 +260,7 @@ const getInitialProps = async ({
       }
     }
 
-    const isTestnet = ctx.query.api === 'testnets'
-    const baseApiUrl = isTestnet ? TESTNET_RELAY_API : MAINNET_RELAY_API
+    const baseApiUrl = resolveRelayApi(ctx.query.api)
 
     const url = new URL(`${baseApiUrl}/chains`)
 

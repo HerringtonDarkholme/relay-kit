@@ -10,11 +10,13 @@ export type SvmReceipt = {
   txHash: string
 }
 
-export type SuiReceipt = {
-  digest: string
+type HTTPMap<T extends string | number | symbol, U> = Record<T, U>[]
+export type LvmReceipt = {
+  txHash: string
+  blockHeight: number
+  status: number | 'pending' | 'confirmed' | 'failed'
 }
 
-type HTTPMap<T extends string | number | symbol, U> = Record<T, U>[]
 export type TronReceipt = {
   id: string
   fee: number
@@ -96,8 +98,8 @@ export type AdaptedWallet = {
   ) => Promise<
     | TransactionReceipt // evm
     | SvmReceipt // svm
-    | SuiReceipt // suivm
     | TronReceipt // tvm
+    | LvmReceipt // lvm
   >
   address: () => Promise<string>
   switchChain: (chainId: number) => Promise<void>

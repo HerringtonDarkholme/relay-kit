@@ -1,6 +1,6 @@
 {
     "name": "@relayprotocol/relay-svm-wallet-adapter",
-    "version": "18.0.3",
+    "version": "19.0.0",
     "description": "An SVM (Solana Virtual Machine) adapter for use in @relayprotocol/relay-sdk",
     "type": "module",
     "source": "./src/index.ts",
@@ -32,7 +32,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/reservoirprotocol/relay-sdk"
+        "url": "git+https://github.com/relayprotocol/relay-kit.git",
+        "directory": "packages/relay-svm-wallet-adapter"
     },
     "keywords": [
         "solana",

@@ -40,6 +40,21 @@ export type TransactionStepItem = Pick<
       owner_address: string
       contract_address: string
       data: string
+      // Native TRX amount (msg.value) for payable calls
+      call_value?: number
+    }
+    // Lighter (LVM)
+    action?: {
+      type: 'transfer'
+      parameters: {
+        toAccountIndex: number
+        assetIndex: number
+        fromRouteType: number
+        toRouteType: number
+        amount: number
+        usdcFee: number
+        memo: string
+      }
     }
     type?: string
   }
