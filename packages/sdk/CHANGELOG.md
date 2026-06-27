@@ -1,5 +1,11 @@
 # @reservoir0x/relay-sdk
 
+## 6.0.1
+
+### Patch Changes
+
+- 3bf4cfb: Convert `convertViemChainToRelayChain` from an arrow function to a function declaration (no behavior change).
+
 ## 6.0.0
 
 ### Major Changes
